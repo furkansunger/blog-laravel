@@ -10,13 +10,11 @@
     
     @include('admin.common._header');
 
-    @section('content')
-    @show
+      <!-- ======= Main ======= -->
+  <main id="main">
+    @yield('content')
+  </main>
     
     @include('admin.common._footer');
-    @include('admin.common._scripts');
-    {{$slot}}
-    @section('bottom')
-    @show
 </body>
 </html>

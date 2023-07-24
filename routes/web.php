@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,20 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/posts/single', function () {
+    return view('home.blog.post');
+})->name("home.single-post");
+
+Route::get('/search', function () {
+    return view('home.common._search');
+})->name("home.search");
+
+Route::get('/login', function () {return view('home.user.login');})->name('home.user.login');
+Route::get('/register', function () {return view('home.user.register');})->name('home.user.register');
+Route::post('/users', [UserController::class, 'store']);
+Route::post('/logout', [UserController::class, 'logout'])->name('home.user.logout');
+
+Route::get('/admin', function () {return view('admin.index');})->name('admin.dashboard');
 
 Route::get("/admin/category",[CategoryController::class,"index"])->name("admin.category.index");
 Route::get("/admin/category/create", [CategoryController::class,"create"])->name("admin.category.create");

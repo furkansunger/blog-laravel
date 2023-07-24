@@ -36,13 +36,20 @@
       </nav><!-- .navbar -->
 
       <div class="position-relative">
-        <a href="#" class="mx-2"><span class="bi-facebook"></span></a>
+        {{-- <a href="#" class="mx-2"><span class="bi-facebook"></span></a>
         <a href="#" class="mx-2"><span class="bi-twitter"></span></a>
-        <a href="#" class="mx-2"><span class="bi-instagram"></span></a>
-
+        <a href="#" class="mx-2"><span class="bi-instagram"></span></a> --}}
+        @auth
+          <a href="{{route('admin.dashboard')}}" class="mx-2"><span class="bi bi-trello"></span> Dashboard</a>
+          <a href="{{route('home.user.logout')}}" class="mx-2"><span class="bi bi-box-arrow-right"></span> Logout</a>
+        @else
+          <a href="{{route('home.user.login')}}" class="mx-2"><span class="bi bi-person-fill"></span> Login</a>
+          <a href="{{route('home.user.register')}}" class="mx-2"><span class="bi-person-plus-fill"></span> Register</a>
+        @endauth
+        
         <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
-
+        
         <!-- ======= Search Form ======= -->
         <div class="search-form-wrap js-search-form-wrap">
           <form action="search-result.html" class="search-form">
@@ -51,7 +58,6 @@
             <button class="btn js-search-close"><span class="bi-x"></span></button>
           </form>
         </div><!-- End Search Form -->
-
       </div>
 
     </div>
